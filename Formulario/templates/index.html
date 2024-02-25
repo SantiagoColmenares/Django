@@ -1,0 +1,122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <script src="{% static 'main.js' %}" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header p-4">
+    <!-- <p>Validaciones JS</p> -->
+  </header>
+  <section>
+    <div class="container">
+      <div>
+        <article class="card">
+          <h1 class="card__title">Los campos se validaran de la siguiente manera</h1>
+          <ul class="list">
+            <li class="list__item"><span class="bold">Ficha:</span> se puede ingresar cualquer caracter</li>
+            <li class="list__item"><span class="bold">Nombre:</span> solo se puede ingresar letras</li>
+            <li class="list__item"><span class="bold">Apellidos:</span> solo se puede ingresar letras</li>
+            <li class="list__item"><span class="bold">Correo:</span> solo se puede ingresar un correo valido</li>
+            <li class="list__item"><span class="bold">Teléfono:</span> solo se puede ingresar numeros</li>
+            <li class="list__item"><span class="bold">Genero:</span> solo se puede seleccionar un genero</li>
+            <li class="list__item"><span class="bold">Ciudad:</span> solo se puede seleccionar una ciudad</li>
+            <li class="list__item"><span class="bold">Habilidades:</span> se tiene que sellecionar minimo 3 habilidades
+            </li>
+          </ul>
+
+        </article>
+
+
+        <article class="card card--mt">
+          <h1 class="card__title">Formulario</h1>
+          <form action="index.html">
+            <div class="form__control form--colum">
+              <label for="ficha">Número de ficha</label>
+              <input type="text" name="ficha" id="ficha" class="form__input" required>
+            </div>
+
+            <div class="form__control form--colum">
+              <label for="nombre">Nombre</label>
+              <input type="text" name="nombre" id="nombre" pattern="[A-Za-z]+" title="Solo puedes ingresar letras"
+                class="form__input" required>
+            </div>
+
+            <div class="form__control form--colum">
+              <label for="apellidos">Apellidos</label>
+              <input type="text" name="nombre" id="apellidos" pattern="[A-Za-z]+" title="Solo puedes ingresar letras"
+                class="form__input" required>
+            </div>
+
+            <div class="form__control form--colum">
+              <label for="correo">Correo</label>
+              <input type="email" name="correo" id="correo" title="El correo no es valido" class="form__input" required>
+            </div>
+
+            <div class="form__control form--colum">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" name="telefono" id="telefono" pattern="[0-9]{10}"
+                title="Ingresa un número de telefono valido" class="form__input" required maxlength="10">
+            </div>
+
+            <div class="form__control">
+              <input type="radio" name="genero" value="1" required><span>Hombre</span>
+              <input type="radio" name="genero" value="2"><span>Mujer</span>
+              <input type="radio" name="genero" value="3"><span>Otro</span>
+            </div>
+
+            <div class="form__control">
+              <label>Ciudad</label>
+              <select name="ciudad" id="ciudad" required>
+                <option value="">Seleccione</option>
+                <option value="medellin">Medellin</option>
+                <option value="bogota">Bogota</option>
+                <option value="bucaramanfa">Bucaramanga</option>
+                <option value="santa_marta">Santa Marta</option>
+                <option value="cartagena">Cartagena</option>
+              </select>
+            </div>
+
+            <div class="form__control">
+              <p>Seleccione minimo 3 habilidades</p>
+
+              <label>
+                <input type="checkbox" value="html" id="html"> HTML <br>
+              </label>
+              <label>
+                <input type="checkbox" value="css" id="css"> CSS <br>
+              </label>
+              <label>
+                <input type="checkbox" value="javascript" id="javascript"> JAVASCRIPT <br>
+              </label>
+              <label>
+                <input type="checkbox" value="php" id="php"> PHP <br>
+              </label>
+              <label>
+                <input type="checkbox" value="java" id="java"> JAVA <br>
+              </label>
+              <label>
+                <input type="checkbox" value="sql" id="sql"> SQL <br>
+              </label>
+              <label>
+                <input type="checkbox" value="uml" id="uml"> UML <br>
+              </label>
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </article>
+      </div>
+
+    </div>
+
+  </section>
+</body>
+
+</html>
