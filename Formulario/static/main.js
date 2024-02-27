@@ -4,14 +4,16 @@ const nombre = document.getElementById("nombre");
 const apellidos = document.getElementById("apellidos");
 const email = document.getElementById("correo");
 const tel = document.getElementById("telefono")
+const generos = document.getElementsByName('genero')
+const boton = document.getElementById('boton')
+const ciudad = document.getElementById('ciudad')
+const habilidad = document.getElementsByName("check[]")
 
 //Funcion para validar ficha cod_***** <---numeros
 const validar = function () {
   let reg = /^[a-zA-z]{3}_[0-9]{5}$/;
   reg.test(ficha.value) ? ficha.classList.add('border--green') : ficha.classList.add('border--red');
 }
-ficha.addEventListener("blur", validar);
-
 
 //Funcion para validar solo letras
 
@@ -36,11 +38,21 @@ const letras = function (e) {
     e.preventDefault()
   }
 }
-nombre.addEventListener("keypress", letras)
-apellidos.addEventListener("keypress", letras)
-nombre.addEventListener("blur", validarLetras);
-apellidos.addEventListener("blur", validarLetras);
 
+
+const validar_formulario = function (e) {
+  let nombre = "";
+
+  for (const valido of generos) {
+    if (valido.checked) {
+      nombre = valido.value
+      break
+    }
+  }
+  e.preventDefault()
+  console.log(nombre)
+
+}
 
 //Funcion para validar email
 
@@ -48,8 +60,6 @@ const validarEmail = function () {
   let reg = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
   reg.test(email.value) ? email.classList.add('border--green') : email.classList.add('border--red');
 };
-
-email.addEventListener("blur", validarEmail);
 
 
 //solo numero
@@ -60,7 +70,44 @@ const telefono = (e) => {
   }
 }
 
+
+//Cidades
+function validarCiudad() {
+  if (ciudad.selectedIndex === 0) {
+    /*    console.log(ciudad.selectedIndex) */
+    alert("Selecciona una ciudad")
+  }
+}
+
+//Habilidades
+
+function validarHabilidades(e) {
+  let suma = 0;
+  for (let i = 0, j = habilidad.length; i < j; i++) {
+    if (habilidad[i].checked == true) {
+      suma++;
+    }
+    if (suma < 3) {
+      alert("Selecciona 3 o mas habilidades")
+    }
+    e.preventDefault()
+  }
+}
+
+//Listeners
+email.addEventListener("blur", validarEmail);
+ficha.addEventListener("blur", validar);
 tel.addEventListener("keypress", telefono);
+boton.addEventListener("click", validarHabilidades);
+boton.addEventListener("click", validarCiudad);
+boton.addEventListener("click", validar_formulario);
+nombre.addEventListener("keypress", letras)
+apellidos.addEventListener("keypress", letras)
+nombre.addEventListener("blur", validarLetras);
+apellidos.addEventListener("blur", validarLetras);
+
+
+
 
 
 

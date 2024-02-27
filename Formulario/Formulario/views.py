@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-def formulario(request,):
+def formulario(request):
   context = {
 
   }
