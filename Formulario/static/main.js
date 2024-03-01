@@ -7,7 +7,7 @@ const tel = document.getElementById("telefono")
 const generos = document.getElementsByName('genero')
 const boton = document.getElementById('boton')
 const ciudad = document.getElementById('ciudad')
-const habilidad = document.getElementsByName("check[]")
+const habilidad = document.querySelectorAll('input[name = "check"]');
 
 //Funcion para validar ficha cod_***** <---numeros
 const validar = function () {
@@ -82,17 +82,19 @@ function validarCiudad() {
 //Habilidades
 
 function validarHabilidades(e) {
-  let suma = 0;
-  for (let i = 0, j = habilidad.length; i < j; i++) {
-    if (habilidad[i].checked == true) {
-      suma++;
+  let contador = 0;
+  for (let i = 0; i < habilidad.length; i++) {
+    if (habilidad[i].checked) {
+      contador++;
     }
-    if (suma < 3) {
-      alert("Selecciona 3 o mas habilidades")
-    }
-    e.preventDefault()
+  }
+
+  if (contador < 3) {
+    alert("Debe seleccionar al menos 3 habilidades.");
+    e.preventDefault();
   }
 }
+
 
 //Listeners
 email.addEventListener("blur", validarEmail);
